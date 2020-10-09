@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>英雄联盟采集系统主界面</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .header {
+            height: 70px;
+            background-color: #1696d7;
+            position: relative;
+        }
+
+        .header h1 {
+            width: 120px;
+            line-height: 70px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            color: gold;
+            font-size: 18px;
+        }
+
+        .header h4 {
+            line-height: 70px;
+            color: black;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+        }
+
+        .centerbody {
+            background-color: white;
+            position: relative;
+        }
+
+
+
+        .menu {
+            width: 200px;
+            height: 600px;
+            background-color: #F1FBFF;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .menu dl dt {
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            text-indent: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #009beb;
+        }
+
+        .menu dl dd ul li a {
+            width: 169px;
+            height: 26px;
+            line-height: 26px;
+            background-color: #EDFBFF;
+            text-indent: 40px;
+            color: #333;
+            display: block;
+            text-decoration-line: none;
+        }
+
+        #showcontent {
+            background-color: white;
+            display: inline-block;
+        }
+
+        .table_header {
+            background-color: #1696d7;
+            width: 250px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .table_body {
+            text-align: center;
+            background-color: beige;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <!--头布局-->
+    <h1>英雄联盟LOL</h1>
+    <h4>欢迎你:{{.AdminName}}</h4>
+</div>
+
+<div class="centerbody">
+
+    <!--左侧菜单-->
+    <div class="menu">
+        <dl>
+            <dt>收集数据</dt>
+            <dd>
+                <ul class="clearfix">
+                    <li>
+                        <a onclick="showCollect()">采集英雄信息</a>
+                    </li>
+                </ul>
+            </dd>
+
+            <dt>管理数据</dt>
+            <dd>
+                <ul class="clearfix">
+                    <li>
+                        <a href="">所有英雄数据</a>
+                    </li>
+                    <li>
+                        <a href="">查询英雄信息</a>
+                    </li>
+                    <li>
+                        <a href="">删除英雄数据</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+
+    <!--具体展示的内容-->
+    <div id="showcontent">
+        <table class="movies">
+            <tr>
+                <td class="table_header">英雄编号</td>
+                <td class="table_header">英雄名称</td>
+                <td class="table_header">英雄别名</td>
+                <td class="table_header">操作难度</td>
+                <td class="table_header">封面图</td>
+            </tr>
+            {{range .AllLols}}
+                <tr>
+                    <td class="table_body">{{.HeroId}}</td>
+                    <td class="table_body">{{.Name}}</td>
+                    <td class="table_body">{{.Alias}}</td>
+                    <td class="table_body">{{.Difficulty}}</td>
+                    <td class="table_body">{{.CoverUrl}}</td>
+                </tr>
+            {{end}}
+        </table>
+    </div>
+</div>
+
+<div class="bottom">
+    <!--页脚-->
+</div>
+</body>
+</html>
